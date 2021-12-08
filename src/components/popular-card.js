@@ -124,7 +124,7 @@ const styles = {
       top: ["0", null, null, "40px"],
       left: ["0", null, null, "40px"],
       ".videoBtn": {
-        backgroundColor: "rgba(239, 158, 72, .07)",
+        backgroundColor: "rgba(19, 170, 82, .07)",
         color: "primary",
         "@media(max-width:710px)": {
           width: "70px",

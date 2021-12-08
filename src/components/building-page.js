@@ -3,21 +3,16 @@ import { jsx, Link } from "theme-ui";
 import { Container, Box, Heading, Text, Image, Button } from "theme-ui";
 import BannerImg from "assets/banner-thumb.png";
 
-export default function Banner() {
+export default function BuildingPage() {
   return (
     <section sx={styles.banner} id="home">
       <Container sx={styles.banner.container}>
         <Box sx={styles.banner.contentBox}>
           <Heading as="h1" variant="heroPrimary">
-            Domina los Conocimientos BIM
+            En Proceso de Construcción
           </Heading>
-          <Text as="p" variant="heroSecondary">
-            Creemos juntos la nueva generación de profesionales que
-            revolucionarán la industria de la construcción.
-          </Text>
-          <Link href="/curso" variant="default">
-
-            <Button variant="primary">Nuestros Cursos</Button>
+          <Link href="/" variant="default">
+            <Button variant="primary">Pagina de Inicio!</Button>
           </Link>
         </Box>
 
@@ -31,36 +26,10 @@ export default function Banner() {
 
 const styles = {
   banner: {
-    pt: ["140px", "145px", "155px", "170px", null, null, "180px", "215px"],
+    pt: ["100px", "80px", "55px", "60px", null, null, "60px", "120px"],
     pb: [2, null, 0, null, 2, 0, null, 5],
     position: "relative",
     zIndex: 2,
-    // "&::before": {
-    //   position: "absolute",
-    //   content: '""',
-    //   bottom: 6,
-    //   left: 0,
-    //   height: "100%",
-    //   width: "100%",
-    //   zIndex: -1,
-    //   backgroundImage: `url(${ShapeLeft})`,
-    //   backgroundRepeat: `no-repeat`,
-    //   backgroundPosition: "bottom left",
-    //   backgroundSize: "36%",
-    // },
-    // "&::after": {
-    //   position: "absolute",
-    //   content: '""',
-    //   bottom: "40px",
-    //   right: 0,
-    //   height: "100%",
-    //   width: "100%",
-    //   zIndex: -1,
-    //   backgroundImage: `url(${ShapeRight})`,
-    //   backgroundRepeat: `no-repeat`,
-    //   backgroundPosition: "bottom right",
-    //   backgroundSize: "32%",
-    // },
     container: {
       minHeight: "inherit",
       display: "flex",
@@ -80,7 +49,7 @@ const styles = {
       mb: [0, null, -6, null, null, "-40px", null, -3],
       img: {
         position: "relative",
-        height: [245, "auto"],
+        height: [200, 300, 340,500],
       },
     },
   },

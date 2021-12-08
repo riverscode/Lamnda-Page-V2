@@ -30,14 +30,15 @@ export default function Header({ className }) {
               </Link>
             ))}
           </Flex>
-
-          <Button
-            className="donate__btn"
-            variant="secondary"
-            aria-label="Contactanos"
-          >
-            Contactanos
-          </Button>
+          <a href="https://cutt.ly/4YmUHmE" target="_blank">
+            <Button
+              className="donate__btn"
+              variant="secondary"
+              aria-label="Contactanos"
+            >
+              Contactanos
+            </Button>
+          </a>
 
           <MobileDrawer />
         </Container>

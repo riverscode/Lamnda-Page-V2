@@ -7,9 +7,9 @@ const popularCourseData = [
   {
     title: "Automatización de procesos con Revit API - Básico",
     description:
-      "El curso tiene como objetivo brindar habilidades al estudiante para poder desarrollar aplicaciones. Se abordaran conocimientos basicos de programación y la interacción con la API de Revit mediante el uso del lenguaje C#",
+      "Crea tus primeras aplicaciones con la API de Revit sin conocimiento en programación.",
     reviewCount: "5.0",
-    watchCount: 63,
+    watchCount: 85,
     videoLink: "L9jU-IIN0ng",
     starCount: 5,
     projectsCount: 6,
@@ -17,25 +17,25 @@ const popularCourseData = [
     expanded: true,
     list: [
       {
-        content: "How to reduce file pixel dimentions without loosing quality",
+        content: "Aprende los conceptoos basicos de la POO.",
       },
       {
-        content: "How to make logo pixel perfects with different extension",
+        content: "Comprende como funciona la API de Revit.",
       },
       {
-        content: "Create vector file from restarize layer styles",
+        content: "Automatiza la gestion de Informacion de Revit.",
       },
       {
-        content: "Make color gradient with photoshop build-in tools",
+        content: "Crea tus primeras aplicaciones con la API de Revit.",
       },
     ],
   },
   {
     title: "Automatización de procesos con Revit API - Intermedio/Avanzado",
     description:
-      "Dirigido para aquellos profesionales que tienen conocimientos básicos de programación y quieren llegar al siguiente nivel en el uso de la API de Revit.",
+      "Lleva tus conocimientos al siguiente nivel con proyectos reales.",
     reviewCount: "4.5",
-    watchCount: 86,
+    watchCount: 42,
     videoLink: "L9jU-IIN0ng",
     starCount: 4,
     projectsCount: 14,
@@ -43,17 +43,18 @@ const popularCourseData = [
     expanded: false,
     list: [
       {
-        content: "How to reduce file pixel dimentions without loosing quality",
+        content: "Comprende el proceso global del desarrollo de aplicaicones BIM.",
       },
       {
-        content: "How to make logo pixel perfects with different extension",
+        content: "Aplica tus conocimientos con proyectos reales.",
       },
       {
-        content: "Create vector file from restarize layer styles",
+        content: "Lleva al siguiente nivel el interfaz de tus aplicaciones.",
       },
       {
-        content: "Make color gradient with photoshop build-in tools",
+        content: "Publica tus aplicaciones en Autodesk Store.",
       },
+
     ],
   },
 ];

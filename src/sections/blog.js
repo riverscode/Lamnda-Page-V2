@@ -4,15 +4,14 @@ import TextFeature from "components/text-feature";
 import Image from "components/image";
 
 import FeatureThumb from "assets/core-feature.png";
-import shapePattern from "assets/shape-pattern2.png";
 
 const data = {
   subTitle: "Nuestro Blog",
-  title: "Smart Jackpots that you may love this anytime & anywhere",
+  title: "El contenido más innovador",
   description:
-    "Get your tests delivered at let home collect sample from the victory of the managements that supplies best design system guidelines ever.",
+    "Conoce lo más innovador y revoluciones juntos la industria de la construcción.",
   btnName: "Nuestros Articulos",
-  btnURL: "#",
+  btnURL: "/blog",
 };
 
 export default function Blog() {
@@ -30,9 +29,6 @@ export default function Blog() {
         </Box>
         <Box sx={styles.thumbnail}>
           <Image src={FeatureThumb} alt="Thumbnail" />
-          <Box sx={styles.shapeBox}>
-            <Image src={shapePattern} alt="Shape" />
-          </Box>
         </Box>
       </Container>
     </section>
