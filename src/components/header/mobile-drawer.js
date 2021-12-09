@@ -7,9 +7,8 @@ import { IoMdClose, IoMdMenu } from "react-icons/io";
 import { Link } from "react-scroll";
 import {
   FaFacebookF,
-  FaTwitter,
   FaGithubAlt,
-  FaDribbble,
+  FaYoutube
 } from "react-icons/fa";
 import menuItems from "data/header-data";
 
@@ -20,15 +19,11 @@ const social = [
   },
   {
     path: "/",
-    icon: <FaTwitter />,
+    icon: <FaYoutube />,
   },
   {
     path: "/",
     icon: <FaGithubAlt />,
-  },
-  {
-    path: "/",
-    icon: <FaDribbble />,
   },
 ];
 
@@ -74,7 +69,7 @@ const MobileDrawer = () => {
             ))}
           </Box>
 
-          <Box sx={styles.menuFooter}>
+          {/* <Box sx={styles.menuFooter}>
             <Box sx={styles.social}>
               {social.map(({ path, icon }, i) => (
                 <Box as="span" key={i} sx={styles.social.icon}>
@@ -82,7 +77,7 @@ const MobileDrawer = () => {
                 </Box>
               ))}
             </Box>
-          </Box>
+          </Box> */}
         </Box>
       </Scrollbars>
     </Drawer>
@@ -169,7 +164,7 @@ const styles = {
       alignItems: "center",
       justifyContent: "center",
       color: "text",
-      fontSize: 14,
+      fontSize: 24,
       mr: "15px",
       transition: "all 0.25s",
       cursor: "pointer",
