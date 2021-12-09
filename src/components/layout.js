@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import Sticky from 'react-stickynode';
 import Header from './header/header';
 import Footer from './footer/footer';
-export default function Layout({ children }) {
+
+
+export default function Layout({ children, isHome = true}) {
   const [isSticky, setIsSticky] = useState(false);
   const handleStateChange = (status) => {
     if (status.status === Sticky.STATUS_FIXED) {
@@ -16,7 +18,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Sticky innerZ={1001} top={0} onStateChange={handleStateChange}>
-        <Header className={`${isSticky ? 'sticky' : 'unSticky'}`} />
+        <Header className={`${isSticky ? 'sticky' : 'unSticky'}`} isHome={isHome} />
       </Sticky>
       <main
         id="content"

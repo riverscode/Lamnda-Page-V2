@@ -5,18 +5,18 @@ import theme from "theme";
 import SEO from "components/seo";
 import Layout from "components/layout";
 import Modal from "components/modal";
-import Banner from "../sections/banner";
-import KeyFeature from "../sections/key-feature";
+import Banner from "../sections/home/banner";
+import KeyFeature from "../sections/home/key-feature";
 import ServiceSection from "../sections/service-section";
 import Feature from "../sections/feature";
-import Blog from "../sections/blog";
+import Blog from "../sections/home/blog";
 import WorkFlow from "../sections/workflow";
 import Package from "../sections/package";
 import TeamSection from "../sections/team-section";
-import TestimonialCard from "../sections/testimonial";
+import TestimonialCard from "../sections/home/testimonial";
 import BlogSection from "../sections/blog-section";
 import Subscribe from "../sections/subscribe";
-import Course from "../sections/course";
+import Course from "../sections/home/course";
 import { VideoProvider } from "contexts/video/video.provider";
 
 export default function IndexPage() {
@@ -24,19 +24,19 @@ export default function IndexPage() {
     <ThemeProvider theme={theme}>
       <StickyProvider>
         <VideoProvider>
-          <Layout>
+          <Layout isHome={true}>
             <SEO title="Lamda Ingeniería & Innovación" />
             <Banner />
             <KeyFeature />
-            {/* <ServiceSection /> */}
-            {/* <Feature /> */}
             <Course />
             <Blog />
-            <Subscribe />
+            <TestimonialCard />
+            {/* <ServiceSection /> */}
+            {/* <Feature /> */}
+            {/* <Subscribe /> */}
             {/* <WorkFlow /> */}
             {/* <Package /> */}
             {/* <TeamSection /> */}
-            <TestimonialCard />
             {/* <BlogSection /> */}
             <Modal />
           </Layout>

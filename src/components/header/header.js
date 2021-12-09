@@ -6,30 +6,35 @@ import Logo from "components/logo";
 import LogoDark from "assets/logo.svg";
 import { DrawerProvider } from "../../contexts/drawer/drawer.provider";
 import MobileDrawer from "./mobile-drawer";
-import menuItems from "./header.data";
+import menuItems from "data/header-data";
 
-export default function Header({ className }) {
+export default function Header({ className, isHome }) {
   return (
     <DrawerProvider>
       <header sx={styles.header} className={className} id="header">
         <Container sx={styles.container}>
           <Logo src={LogoDark} />
 
-          <Flex as="nav" sx={styles.nav}>
-            {menuItems.map(({ path, label }, i) => (
-              <Link
-                activeClass="active"
-                to={path}
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                key={i}
-              >
-                {label}
-              </Link>
-            ))}
-          </Flex>
+            <Flex as="nav" sx={styles.nav}>
+            {isHome &&
+              <>
+                {menuItems.map(({ path, label }, i) => (
+                <Link
+                  activeClass="active"
+                  to={path}
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  key={i}
+                >
+                  {label}
+                </Link>
+              ))}
+              </>
+              }
+            </Flex>
+
           <a href="https://cutt.ly/4YmUHmE" target="_blank">
             <Button
               className="donate__btn"

@@ -11,7 +11,6 @@ const data = [
     path: "blog",
     label: "Blog",
   },
-
   {
     path: "testimonial",
     label: "Testiomonios",

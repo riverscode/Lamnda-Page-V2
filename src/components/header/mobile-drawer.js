@@ -11,7 +11,7 @@ import {
   FaGithubAlt,
   FaDribbble,
 } from "react-icons/fa";
-import menuItems from "./header.data";
+import menuItems from "data/header-data";
 
 const social = [
   {
