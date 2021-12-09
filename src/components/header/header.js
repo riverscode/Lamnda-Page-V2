@@ -35,7 +35,7 @@ export default function Header({ className, isHome }) {
               }
             </Flex>
 
-          <a href="https://cutt.ly/4YmUHmE" target="_blank">
+          <a href="https://cutt.ly/4YmUHmE" target="_blank" rel="noopener">
             <Button
               className="donate__btn"
               variant="secondary"
