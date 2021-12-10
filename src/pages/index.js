@@ -14,8 +14,8 @@ import WorkFlow from "../sections/workflow";
 import Package from "../sections/package";
 import TeamSection from "../sections/team-section";
 import TestimonialCard from "../sections/home/testimonial";
-import BlogSection from "../sections/blog-section";
-import Subscribe from "../sections/subscribe";
+import BlogSection from "../sections/blog/blog-section";
+import Subscribe from "../sections/blog/subscribe";
 import Course from "../sections/home/course";
 import { VideoProvider } from "contexts/video/video.provider";
 
