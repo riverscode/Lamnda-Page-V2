@@ -1,4 +1,3 @@
-import Avatar1 from "assets/testimonial/avatar1.png";
 import Peru from "assets/country/country-peru.png";
 import Argentina from "assets/country/country-argentina.png";
 
