@@ -7,15 +7,8 @@ import Layout from "components/layout";
 import Modal from "components/modal";
 import Banner from "../sections/home/banner";
 import KeyFeature from "../sections/home/key-feature";
-import ServiceSection from "../sections/service-section";
-import Feature from "../sections/feature";
 import Blog from "../sections/home/blog";
-import WorkFlow from "../sections/workflow";
-import Package from "../sections/package";
-import TeamSection from "../sections/team-section";
 import TestimonialCard from "../sections/home/testimonial";
-import BlogSection from "../sections/blog/blog-section";
-import Subscribe from "../sections/blog/subscribe";
 import Course from "../sections/home/course";
 import { VideoProvider } from "contexts/video/video.provider";
 
@@ -31,13 +24,6 @@ export default function IndexPage() {
             <Course />
             <Blog />
             <TestimonialCard />
-            {/* <ServiceSection /> */}
-            {/* <Feature /> */}
-            {/* <Subscribe /> */}
-            {/* <WorkFlow /> */}
-            {/* <Package /> */}
-            {/* <TeamSection /> */}
-            {/* <BlogSection /> */}
             <Modal />
           </Layout>
         </VideoProvider>
