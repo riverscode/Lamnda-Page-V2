@@ -5,14 +5,13 @@ import { StickyProvider } from "contexts/app/app.provider";
 import { VideoProvider } from "contexts/video/video.provider";
 import SEO from "components/seo";
 
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import Post from 'components/post'
-import { sortByDate } from 'utils'
-// import BlogList from "sections/blog/blog-list";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-
+import { sortByDate } from "utils";
+import BlogBanner from "sections/blog/blog-banner";
+import BlogList from "sections/blog/blog-list";
 
 export default function BlogPage({ posts }) {
   return (
@@ -21,14 +20,8 @@ export default function BlogPage({ posts }) {
         <VideoProvider>
           <Layout isHome={false}>
             <SEO title="Blog - Lamda Ingeniería & Innovación" />
-            
-            <div>
-              {posts.map((post, index) => (
-                <Post key={index} post={post} />
-              ))}
-            </div>
-
-            {/* <BlogList /> */}
+            <BlogBanner />
+            <BlogList posts={posts} />
           </Layout>
         </VideoProvider>
       </StickyProvider>
@@ -36,34 +29,28 @@ export default function BlogPage({ posts }) {
   );
 }
 
-
 export async function getStaticProps() {
   const root = process.cwd();
-  // Get files from the posts dir
-  const files = fs.readdirSync(path.join(root,'src','data','post'))
+  const files = fs.readdirSync(path.join(root, "src", "data", "post"));
 
-  // Get slug and frontmatter from posts
   const posts = files.map((filename) => {
-    // Create slug
-    const slug = filename.replace('.md', '')
-
-    // Get frontmatter
+    const slug = filename.replace(".md", "");
     const markdownWithMeta = fs.readFileSync(
-      path.join(root,'src','data','post', filename),
-      'utf-8'
-    )
+      path.join(root, "src", "data", "post", filename),
+      "utf-8"
+    );
 
-    const { data: frontmatter } = matter(markdownWithMeta)
+    const { data: frontmatter } = matter(markdownWithMeta);
 
     return {
       slug,
       frontmatter,
-    }
-  })
+    };
+  });
 
   return {
     props: {
       posts: posts.sort(sortByDate),
     },
-  }
+  };
 }

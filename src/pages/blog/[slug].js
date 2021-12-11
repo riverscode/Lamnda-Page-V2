@@ -1,8 +1,12 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import marked from 'marked'
-import Link from 'next/link'
+/** @jsx jsx */
+import { jsx, Container, Box, Image } from "theme-ui";
+import { ThemeProvider } from "theme-ui";
+import theme from "theme";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import marked from "marked";
+import Layout from "components/layout";
 
 export default function PostPage({
   frontmatter: { title, date, cover_image },
@@ -10,45 +14,46 @@ export default function PostPage({
   content,
 }) {
   return (
-    <>
-      <Link href='/'>
-        <a className='btn btn-back'>Go Back</a>
-      </Link>
-      <div className='card card-page'>
-        <h1 className='post-title'>{title}</h1>
-        <div className='post-date'>Publicado en {date}</div>
-        <img src={cover_image} alt='' />
-        <div className='post-body'>
-        <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
-        </div>
-      </div>
-    </>
-  )
+    <ThemeProvider theme={theme}>
+      <Layout isHome={false}>
+        <Container sx={styles.container}>
+          <Box className="card card-page">
+            <Image src={cover_image} alt="" css={{ width: "100%" }} />
+            <h1 className="post-title">{title}</h1>
+            <p className="post-date">Publicado en {date}</p>
+            <Box className="post-body">
+              <Box dangerouslySetInnerHTML={{ __html: marked(content) }}></Box>
+            </Box>
+          </Box>
+        </Container>
+      </Layout>
+    </ThemeProvider>
+  );
 }
 
 const root = process.cwd();
 export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join(root,'src','data','post'))
+  const files = fs.readdirSync(path.join(root, "src", "data", "post"));
 
   const paths = files.map((filename) => ({
     params: {
-      slug: filename.replace('.md', ''),
+      slug: filename.replace(".md", ""),
     },
-  }))
+  }));
 
   return {
     paths,
     fallback: false,
-  }
+  };
 }
 
 export async function getStaticProps({ params: { slug } }) {
   const markdownWithMeta = fs.readFileSync(
-    path.join(root,'src','data','post', slug + '.md'),
-    'utf-8'
-  )
+    path.join(root, "src", "data", "post", slug + ".md"),
+    "utf-8"
+  );
 
-  const { data: frontmatter, content } = matter(markdownWithMeta)
+  const { data: frontmatter, content } = matter(markdownWithMeta);
 
   return {
     props: {
@@ -56,5 +61,23 @@ export async function getStaticProps({ params: { slug } }) {
       slug,
       content,
     },
-  }
+  };
 }
+
+const styles = {
+  container: {
+    pt: ["140px", "145px", "155px", "170px", null, null, "180px", "215px"],
+    pb: [2, null, 0, null, 2, 0, null, 5],
+    overflowX: "hidden",
+    maxWidth: [
+      "100%",
+      null,
+      null,
+      "750px",
+      "1000px",
+      "1180px",
+      null,
+      "calc(50% + 865px)",
+    ],
+  },
+};

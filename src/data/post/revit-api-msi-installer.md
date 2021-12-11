@@ -1,15 +1,13 @@
 ---
-title: 'Como generar un instalador (.msi) para un plugin de Revit | Revit API'
-date: 'Diciembre 10, 2021'
-excerpt: 'Aprenderemos a crear un instalador para un aplicativo de la API de Revit en Visual Studio C#'
-cover_image: '/images/posts/revit-api-msi-installer/Configuracion_de_Acciones_personalizadas.png'
+title: "Como generar un instalador (.msi) para un plugin de Revit | Revit API"
+date: "Diciembre 10, 2021"
+excerpt: "Aprenderemos a crear un instalador para un aplicativo de la API de Revit en Visual Studio C#"
+cover_image: "/images/posts/revit-api-msi-installer/Configuracion_de_Acciones_personalizadas.png"
 ---
 
-Una pregunta recurrente en los cursos del cursos [Automatizacion de procesos con la API de Revit](https://lambda.com.pe/) es como se puede crear un instalador en formato .msi para un aplicativo creado. 
+Una pregunta recurrente en los cursos del cursos [Automatizacion de procesos con la API de Revit](https://lambda.com.pe/) es como se puede crear un instalador en formato .msi para un aplicativo creado.
 
-Los multiples tutoriales de inicio siempre nos mencionan que para que un aplicativo creado con la API de Revit sea reconocido por el programa Autodesk Revit es necesario generar una crear un archivo manifiesto (.addin) y un biblioteca de clases (.dll) y estos archivos deben ser copiados en una ruta especifica (C:\Users\%User%\AppData\Roaming\Autodesk\Revit\Addins\%Version%)que leerá dicho archivo manifiesto. 
-
-** COLOCAR IMAGEN DEL ARCHIVO MANIFIESTO Y .ADDLL
+Los multiples tutoriales de inicio siempre nos mencionan que para que un aplicativo creado con la API de Revit sea reconocido por el programa Autodesk Revit es necesario generar una crear un archivo manifiesto (.addin) y un biblioteca de clases (.dll) y estos archivos deben ser copiados en una ruta especifica (C:\Users\%User%\AppData\Roaming\Autodesk\Revit\Addins\%Version%)que leerá dicho archivo manifiesto.
 
 La solución mas sencilla es crear eventos de compilación que durante el build copie los archivos .dll y .addin en la carpeta mencionada. La otra solución es crear un archivo comprimido auto extraíble con winrar que simplemente extrae los archivos en una ruta especifica. [Ver tutorial](https://www.youtube.com/watch?v=m2lv8tQUO1c)
 
@@ -24,13 +22,13 @@ copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\20XX"
 
 Dado lo mencionado lo anterior, no convence estas dos soluciones que he venido aplicando es por lo cual investigando me encontré con el tutorial de Joshua Lumley, [Revit API C# make Installer MSI File (Executable) ... and avoid my Blunders! (secrets part 2)A](https://www.youtube.com/watch?v=S0MPxBRL7c0), y lo he replicado para una aplicación mas sencilla y claro para la mayoría de mis lectores que manejas ESPANOL
 
-## Crear un archivo .msi para un aplicativo con la API de Revit
+## **Crear un archivo .msi para un aplicativo con la API de Revit**
 
 Lo primero que tenemos que entender es que necesitamos una estructura base minima de tres proyectos para crear un instalador una librería de clases que contendrá el external command o el external aplicación que es nuestro addin de Revit, un proyecto de tipo Setup project que lo obtendremos instalando [Microsoft visual studio installer project](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2017InstallerProjects) o la version que función para [Visual studio 2022](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects) y por ultimo una librería de clases para el archivo que obtendrá los métodos install y uninstall que ejecutara el proyecto setup.
 
 ![directory structure.PNG](/images/posts/revit-api-msi-installer/directory_structure.png)
 
-### Proyecto de Revit addin
+# **2. _Proyecto de Revit addin_**
 
 Primero crearemos un proyecto de tipo library class (.Net framework) que llamaremos RevitSimpleCommand en el cual solo crearemos un simple external command que muestre un mensaje a través de un task dialog.
 
@@ -45,7 +43,7 @@ using Autodesk.Revit.Attributes;
 
 namespace RevitSimpleCommand
 {
-    [Transaction(TransactionMode.ReadOnly)]    
+    [Transaction(TransactionMode.ReadOnly)]
     public class CmdHelloWorld : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
@@ -58,9 +56,9 @@ namespace RevitSimpleCommand
 
 ```
 
-### InstallerCommands
+# **2. _Comandos para instalar_**
 
-En nuestro proyecto creamos un nuevo elemento de tipo installer class que llamaremos InstallerCommands donde solo tendremos dos métodos que servirán para decirle al setup project que secuencia de acciones realizar cuando ejecute el install y un install. Además de los comandos es necesarios instalar dos paquetes de Nuget  Extended.Wpf.Toolkit y Ookii.Dialogs.Wpf. 
+En nuestro proyecto creamos un nuevo elemento de tipo installer class que llamaremos InstallerCommands donde solo tendremos dos métodos que servirán para decirle al setup project que secuencia de acciones realizar cuando ejecute el install y un install. Además de los comandos es necesarios instalar dos paquetes de Nuget Extended.Wpf.Toolkit y Ookii.Dialogs.Wpf.
 
 ```csharp
 /*
@@ -98,8 +96,8 @@ public override void Install(IDictionary stateSaver)
             bool exists = Directory.Exists(sDir);
 
             if (!exists) Directory.CreateDirectory(sDir);
-       
-            XElement XElementAddIn; 
+
+            XElement XElementAddIn;
             if (addinType == AddinType.Command)
             {
                 XElementAddIn = new XElement("AddIn", new XAttribute("Type", "Command"));
@@ -109,9 +107,9 @@ public override void Install(IDictionary stateSaver)
                 XElementAddIn = new XElement("AddIn", new XAttribute("Type", "Application"));
                 XElementAddIn.Add(new XElement("Name", commandProject));
             }
-            
-            XElementAddIn.Add(new XElement("Assembly", this.Context.Parameters["targetdir"].Trim()  + commandProject + ".dll")); 
-            XElementAddIn.Add(new XElement("AddInId", Guid.NewGuid().ToString())); 
+
+            XElementAddIn.Add(new XElement("Assembly", this.Context.Parameters["targetdir"].Trim()  + commandProject + ".dll"));
+            XElementAddIn.Add(new XElement("AddInId", Guid.NewGuid().ToString()));
             XElementAddIn.Add(new XElement("FullClassName",  $"{commandProject}.{commandName}"));
             XElementAddIn.Add(new XElement("VendorId", "ADSK"));
             XElementAddIn.Add(new XElement("VendorDescription", $"{companyName}, {companyURL}"));
@@ -164,7 +162,7 @@ public override void Uninstall(IDictionary stateSaver)
         }
 ```
 
-# **3. *SETUP PROJECT***
+# **3. _Proyecto Instalador_**
 
 Lo primero que haremos luego de crear nuestro proyecto que llamaremos RevitAddinInstaller es configurar las propiedades InstallAllUser = true, RemovePreviewVersion = true y TargetPlaform = x64 dentro de la barra de propiedades del proyecto.
 
@@ -172,19 +170,19 @@ Cambiamos los prerrequisitos del proyecto accediendo a las propiedades con una a
 
 ![Propiedades.png](/images/posts/revit-api-msi-installer/Propiedades.png)
 
-Viene la parte mas complicada de nuestro setup project que es configurar para que este proyecto tenga un correcto funcionamiento. 
+Viene la parte mas complicada de nuestro setup project que es configurar para que este proyecto tenga un correcto funcionamiento.
 
 ![prerrequisitos.PNG](/images/posts/revit-api-msi-installer/prerrequisitos.png)
 
-## A. ***Configurar el File System***
+## A. **_Configurar el File System_**
 
-Para el panel de **File System Config** es necesario agregar los resultados del build de los proyectos **InstallerCommands y RevitSimpleCommand** dentro de la carpeta **Aplication Folder**. Para agregar esta información es necesario entrar el menu desplegable de Aplication folder y seleccionar **Resultado de Proyecto**. Seleccionamos cada uno de los proyecto y agregamos el **Resultado principal.** 
+Para el panel de **File System Config** es necesario agregar los resultados del build de los proyectos **InstallerCommands y RevitSimpleCommand** dentro de la carpeta **Aplication Folder**. Para agregar esta información es necesario entrar el menu desplegable de Aplication folder y seleccionar **Resultado de Proyecto**. Seleccionamos cada uno de los proyecto y agregamos el **Resultado principal.**
 
 ![Configurar el file System.PNG](/images/posts/revit-api-msi-installer/Configurar_el_file_System.png)
 
-## *B. **Configurar Register***
+## \*B. **Configurar Register\***
 
-Para el panel de **Register Config**  es necesario agregar dos variables. **ProductVersion y TARGETDIR** dentro de la carpeta **[ProductName].**
+Para el panel de **Register Config** es necesario agregar dos variables. **ProductVersion y TARGETDIR** dentro de la carpeta **[ProductName].**
 
 |— 📁 HKEY_LOCAL_MACHINE
 
@@ -193,8 +191,6 @@ Para el panel de **Register Config**  es necesario agregar dos variables. **Prod
         |— 📂 [Manufacturer]
 
             |— 📂 [ProductName]
-
- 
 
 ```
 | Name           | Value            |
@@ -205,13 +201,13 @@ Para el panel de **Register Config**  es necesario agregar dos variables. **Prod
 
 ![Configuracion de Registro.PNG](/images/posts/revit-api-msi-installer/Configuracion_de_Registro.png)
 
-## *C. Configurar Custom Actions Editor*
+## _C. Configurar Custom Actions Editor_
 
-Dentro de las Custom Actions, configuramos las acciones de Install y UnInstall agregando el proyecto InstallerCommands. 
+Dentro de las Custom Actions, configuramos las acciones de Install y UnInstall agregando el proyecto InstallerCommands.
 
-**Nota:** 
+**Nota:**
 
-Al momento de configurar la propiedad de **TARGETDIR** en el panel de propiedades de cada acciones.  Asignar el valor **/Target.Dir = "[TARGETDIR] ".** Note que se esta dejando un espacio antes de cerrar las comillas. **NO OLVIDAR!**
+Al momento de configurar la propiedad de **TARGETDIR** en el panel de propiedades de cada acciones. Asignar el valor **/Target.Dir = "[TARGETDIR] ".** Note que se esta dejando un espacio antes de cerrar las comillas. **NO OLVIDAR!**
 
 ![Configuracion de Acciones personalizadas.PNG](/images/posts/revit-api-msi-installer/Configuracion_de_Acciones_personalizadas.png)
 

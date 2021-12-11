@@ -15,25 +15,25 @@ export default function Header({ className, isHome }) {
         <Container sx={styles.container}>
           <Logo src={LogoDark} />
 
-            <Flex as="nav" sx={styles.nav}>
-            {isHome &&
+          <Flex as="nav" sx={styles.nav}>
+            {isHome && (
               <>
                 {menuItems.map(({ path, label }, i) => (
-                <Link
-                  activeClass="active"
-                  to={path}
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                  key={i}
-                >
-                  {label}
-                </Link>
-              ))}
+                  <Link
+                    activeClass="active"
+                    to={path}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    key={i}
+                  >
+                    {label}
+                  </Link>
+                ))}
               </>
-              }
-            </Flex>
+            )}
+          </Flex>
 
           <a href="https://cutt.ly/4YmUHmE" target="_blank" rel="noopener">
             <Button
@@ -44,8 +44,11 @@ export default function Header({ className, isHome }) {
               Contactanos
             </Button>
           </a>
-
-          <MobileDrawer />
+          {isHome && (
+            <>
+              <MobileDrawer />
+            </>
+          )}
         </Container>
       </header>
     </DrawerProvider>

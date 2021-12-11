@@ -1,31 +1,22 @@
 /** @jsx jsx */
-import { jsx, Image, Box, Heading, Text, Flex, Link } from 'theme-ui';
+import { jsx, Image, Button, Box, Heading, Text, Flex, Link } from "theme-ui";
 
-export default function PostCard({
-  src,
-  alt,
-  postLink,
-  title,
-  authorName,
-  date,
-}) {
+export default function PostCard({ post }) {
   return (
     <Box sx={styles.card}>
       <Box sx={styles.thumbnail}>
-        <Image src={src} alt={alt} />
+        <Image src={post.frontmatter.cover_image} alt="post image" />
       </Box>
 
       <Flex sx={styles.postContent}>
-        <Heading sx={styles.title}>
-          <Link href={postLink} variant="blog">
-            {title}
-          </Link>
-        </Heading>
-
+        <Heading sx={styles.title}>{post.frontmatter.title}</Heading>
+        <Text as="p">{post.frontmatter.excerpt}</Text>
         <Flex sx={styles.postFooter}>
-          <Text sx={styles.postFooter.name}>{authorName}</Text>
-          <Text sx={styles.postFooter.date}>{date}</Text>
+          <Text sx={styles.postFooter.date}>{post.frontmatter.date}</Text>
         </Flex>
+        <Link href={`/blog/${post.slug}`}>
+          <Button variant="secondary">Leer más</Button>
+        </Link>
       </Flex>
     </Box>
   );
@@ -33,50 +24,43 @@ export default function PostCard({
 
 const styles = {
   card: {
-    backgroundColor: 'white',
-    boxShadow: '0px 4px 10px rgba(38,78,118,0.12)',
-    borderRadius: '7px',
-    m: '0 15px 40px',
-    transition: 'all 0.3s',
-    '&:hover': {
-      boxShadow: '0px 5px 20px rgba(38,78,118,0.15)',
-    },
+    backgroundColor: "white",
+    boxShadow: "0px 4px 10px rgba(38, 78, 118, 0.3)",
+    borderRadius: "7px",
+    m: "0 15px 40px",
+    transition: "all 0.3s",
   },
 
   thumbnail: {
-    borderRadius: '7px 7px 0 0',
-    overflow: 'hidden',
-    display: 'flex',
+    borderRadius: "7px 7px 0 0",
+    overflow: "hidden",
+    display: "flex",
     img: {
-      width: '100%',
+      width: "100%",
     },
   },
   postContent: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    padding: ['15px 20px', '25px 30px'],
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: ["15px 4px", "25px 8px"],
   },
   title: {
     fontSize: [3, null, null, null, null, 4],
-    color: 'heading',
+    color: "heading",
     lineHeight: [1.4, 1.5],
     fontWeight: 700,
     mb: [3, 4, 5],
     pr: [0, null, null, null, 5],
   },
   postFooter: {
-    width: '100%',
-    justifyContent: 'space-between',
-    alignItem: 'center',
-    name: {
-      fontSize: ['14px', null, 2],
-      fontWeight: 500,
-      color: 'primary',
-      lineHeight: 1.4,
-    },
+    width: "100%",
+    justifyContent: "space-between",
+    alignItem: "center",
     date: {
-      fontSize: ['14px', null, 2],
-      fontWeight: 400,
+      mt: [2, 3, 4],
+      mb: [2, 3, 4],
+      fontSize: ["14px", null, "14px"],
+      fontWeight: 700,
       lineHeight: 1.5,
     },
   },
