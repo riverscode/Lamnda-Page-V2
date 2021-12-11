@@ -32,7 +32,7 @@ export default function PostPage({
             </Box>
           </Box>
           <FacebookProvider appId="1090833335084068">
-            <Comments href={`https://lambda.com.pe/blog/${slug}`} tabs="timeline" />
+            <Comments href={`https://lambda.com.pe/blog/${slug}`}  width="100%"/>
           </FacebookProvider> 
         </Container>
       </Layout>
