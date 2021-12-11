@@ -8,6 +8,7 @@ import matter from "gray-matter";
 import marked from "marked";
 import highlight from 'highlight.js'
 import Layout from "components/layout";
+import { FacebookProvider, Comments } from 'react-facebook';
 
 export default function PostPage({
   frontmatter: { title, date, cover_image },
@@ -30,6 +31,9 @@ export default function PostPage({
               }) }}></Box>
             </Box>
           </Box>
+          <FacebookProvider appId="1090833335084068">
+            <Comments href={`https://lambda.com.pe/blog/${slug}`} tabs="timeline" />
+          </FacebookProvider> 
         </Container>
       </Layout>
     </ThemeProvider>
