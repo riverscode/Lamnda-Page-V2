@@ -12,10 +12,6 @@ Los multiples tutoriales de inicio siempre nos mencionan que para que un aplicat
 La solución mas sencilla es crear eventos de compilación que durante el build copie los archivos .dll y .addin en la carpeta mencionada. La otra solución es crear un archivo comprimido auto extraíble con winrar que simplemente extrae los archivos en una ruta especifica. **[Ver tutorial](https://www.youtube.com/watch?v=m2lv8tQUO1c)**
 
 ```csharp
-/*
-####### COMANDOS  #######
-*/
-
 copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\20XX"
 copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\20XX"
 ```
@@ -33,10 +29,6 @@ Lo primero que tenemos que entender es que necesitamos una estructura base minim
 Primero crearemos un proyecto de tipo library class (.Net framework) que llamaremos RevitSimpleCommand en el cual solo crearemos un simple external command que muestre un mensaje a través de un task dialog.
 
 ```csharp
-/*
-####### SIMPLE REVIT COMMAND #######
-*/
-
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.Attributes;
@@ -62,20 +54,16 @@ namespace RevitSimpleCommand
 
 En nuestro proyecto creamos un nuevo elemento de tipo installer class que llamaremos InstallerCommands donde solo tendremos dos métodos que servirán para decirle al setup project que secuencia de acciones realizar cuando ejecute el install y un install. Además de los comandos es necesarios instalar dos paquetes de Nuget Extended.Wpf.Toolkit y Ookii.Dialogs.Wpf.
 
-```csharp
-/*
-####### VARIBLES PERSONALIZADAS #######
-*/
 
+### Variables Globales
+
+```csharp
 AddinType addinType = AddinType.Command;
 string commandProject = "RevitSimpleCommand";
 string commandName = "CmdHelloWorld";
 string companyName = "Lambda Ingenieria e Innovacion";
 string companyURL = "https://lambda.com.pe/";
 
-/*
-####### ENUM PARA LOS TIPOS DE ADDINS #######
-*/
 enum AddinType
     {
         Command = 0,
@@ -83,15 +71,15 @@ enum AddinType
     }
 ```
 
+### Metodo Install 
+
 ```csharp
-/*
-####### METODO DE INSTALACION #######
-*/
 public override void Install(IDictionary stateSaver)
         {
             Microsoft.Win32.RegistryKey rkbase = null;
 
-            rkbase = Microsoft.Win32.RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, Microsoft.Win32.RegistryView.Registry64);
+            rkbase = Microsoft.Win32.RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, 
+                                                             Microsoft.Win32.RegistryView.Registry64);
 
             rkbase.CreateSubKey($"SOFTWARE\\Wow6432Node\\{companyName}\\Revit API NuGet Example 2019 Packages", 
                                 Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree).SetValue("OokiiVersion", 
@@ -140,11 +128,9 @@ public override void Install(IDictionary stateSaver)
         }
 ```
 
-```csharp
-/*
-####### METODO DE DESINSTALACION #######
-*/
+### Metodo Uninstall 
 
+```csharp
 public override void Uninstall(IDictionary stateSaver)
         {
             string sDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Autodesk\\Revit\\Addins";
