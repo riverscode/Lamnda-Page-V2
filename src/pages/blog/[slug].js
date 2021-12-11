@@ -8,7 +8,8 @@ import matter from "gray-matter";
 import marked from "marked";
 import highlight from 'highlight.js'
 import Layout from "components/layout";
-import { FacebookProvider, Comments } from 'react-facebook';
+import { FacebookProvider, Comments, Like } from 'react-facebook';
+import SEO from "components/seo";
 
 export default function PostPage({
   frontmatter: { title, date, cover_image },
@@ -18,6 +19,7 @@ export default function PostPage({
   return (
     <ThemeProvider theme={theme}>
       <Layout isHome={false}>
+      <SEO title={`Blog Lambda | ${title}`} />
         <Container sx={styles.container}>
           <Box className="card card-page">
             <Image src={cover_image} alt="" css={{ width: "100%" }} />
@@ -32,6 +34,7 @@ export default function PostPage({
             </Box>
           </Box>
           <FacebookProvider appId="1090833335084068">
+            {/* <Like href={`https://lambda.com.pe/blog/${slug}`}  /> */}
             <Comments href={`https://lambda.com.pe/blog/${slug}`}  width="100%"/>
           </FacebookProvider> 
         </Container>
