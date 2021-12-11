@@ -1,0 +1,8 @@
+pre {
+    background-color: rgba(192, 236, 210, 0.1) !important; 
+    padding: 5px;
+    overflow-x: auto;
+    border-radius: 7px;
+    border: 1px  solid rgba(19, 170, 80, 0.1);
+    box-shadow: 5px 5px 10px rgba(19, 170, 80, 0.1);
+}

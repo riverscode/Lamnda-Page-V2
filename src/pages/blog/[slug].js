@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import marked from "marked";
+import highlight from 'highlight.js'
 import Layout from "components/layout";
 
 export default function PostPage({
@@ -22,7 +23,11 @@ export default function PostPage({
             <h1 className="post-title">{title}</h1>
             <p className="post-date">Publicado en {date}</p>
             <Box className="post-body">
-              <Box dangerouslySetInnerHTML={{ __html: marked(content) }}></Box>
+              <Box dangerouslySetInnerHTML={{ __html: marked(content, {
+                highlight(md){
+                  return highlight.highlightAuto(md).value
+                }
+              }) }}></Box>
             </Box>
           </Box>
         </Container>

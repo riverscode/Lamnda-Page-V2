@@ -4,6 +4,8 @@ import { initGA, logPageView } from 'analytics';
 import 'react-multi-carousel/lib/styles.css';
 import 'react-modal-video/css/modal-video.min.css';
 import 'rc-drawer/assets/index.css';
+import 'highlight.js/styles/xcode.css';
+import 'assets/css/styles.css'
 import 'typeface-dm-sans';
 export default function CustomApp({ Component, pageProps }) {
   useEffect(() => {

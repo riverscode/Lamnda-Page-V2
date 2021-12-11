@@ -5,11 +5,11 @@ excerpt: "Aprenderemos a crear un instalador para un aplicativo de la API de Rev
 cover_image: "/images/posts/revit-api-msi-installer/Configuracion_de_Acciones_personalizadas.png"
 ---
 
-Una pregunta recurrente en los cursos del cursos [Automatizacion de procesos con la API de Revit](https://lambda.com.pe/) es como se puede crear un instalador en formato .msi para un aplicativo creado.
+Una pregunta recurrente en los cursos del cursos **[Automatizacion de procesos con la API de Revit](https://lambda.com.pe/)** es como se puede crear un instalador en formato .msi para un aplicativo creado.
 
 Los multiples tutoriales de inicio siempre nos mencionan que para que un aplicativo creado con la API de Revit sea reconocido por el programa Autodesk Revit es necesario generar una crear un archivo manifiesto (.addin) y un biblioteca de clases (.dll) y estos archivos deben ser copiados en una ruta especifica (C:\Users\%User%\AppData\Roaming\Autodesk\Revit\Addins\%Version%)que leerá dicho archivo manifiesto.
 
-La solución mas sencilla es crear eventos de compilación que durante el build copie los archivos .dll y .addin en la carpeta mencionada. La otra solución es crear un archivo comprimido auto extraíble con winrar que simplemente extrae los archivos en una ruta especifica. [Ver tutorial](https://www.youtube.com/watch?v=m2lv8tQUO1c)
+La solución mas sencilla es crear eventos de compilación que durante el build copie los archivos .dll y .addin en la carpeta mencionada. La otra solución es crear un archivo comprimido auto extraíble con winrar que simplemente extrae los archivos en una ruta especifica. **[Ver tutorial](https://www.youtube.com/watch?v=m2lv8tQUO1c)**
 
 ```csharp
 /*
@@ -20,11 +20,11 @@ copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\20XX"
 copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\20XX"
 ```
 
-Dado lo mencionado lo anterior, no convence estas dos soluciones que he venido aplicando es por lo cual investigando me encontré con el tutorial de Joshua Lumley, [Revit API C# make Installer MSI File (Executable) ... and avoid my Blunders! (secrets part 2)A](https://www.youtube.com/watch?v=S0MPxBRL7c0), y lo he replicado para una aplicación mas sencilla y claro para la mayoría de mis lectores que manejas ESPANOL
+Dado lo mencionado lo anterior, no convence estas dos soluciones que he venido aplicando es por lo cual investigando me encontré con el tutorial de Joshua Lumley, **[Revit API C# make Installer MSI File (Executable) ... and avoid my Blunders! (secrets part 2)A](https://www.youtube.com/watch?v=S0MPxBRL7c0)**, y lo he replicado para una aplicación mas sencilla y claro para la mayoría de mis lectores que manejas ESPANOL
 
 ## **Crear un archivo .msi para un aplicativo con la API de Revit**
 
-Lo primero que tenemos que entender es que necesitamos una estructura base minima de tres proyectos para crear un instalador una librería de clases que contendrá el external command o el external aplicación que es nuestro addin de Revit, un proyecto de tipo Setup project que lo obtendremos instalando [Microsoft visual studio installer project](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2017InstallerProjects) o la version que función para [Visual studio 2022](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects) y por ultimo una librería de clases para el archivo que obtendrá los métodos install y uninstall que ejecutara el proyecto setup.
+Lo primero que tenemos que entender es que necesitamos una estructura base minima de tres proyectos para crear un instalador una librería de clases que contendrá el external command o el external aplicación que es nuestro addin de Revit, un proyecto de tipo Setup project que lo obtendremos instalando **[Microsoft visual studio installer project](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2017InstallerProjects)** o la version que función para **[Visual studio 2022](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects)** y por ultimo una librería de clases para el archivo que obtendrá los métodos install y uninstall que ejecutara el proyecto setup.
 
 ![directory structure.PNG](/images/posts/revit-api-msi-installer/directory_structure.png)
 
@@ -46,7 +46,9 @@ namespace RevitSimpleCommand
     [Transaction(TransactionMode.ReadOnly)]
     public class CmdHelloWorld : IExternalCommand
     {
-        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        public Result Execute(ExternalCommandData commandData, 
+                              ref string message, 
+                              ElementSet elements)
         {
             TaskDialog.Show("Simple title", "Hello World");
             return Result.Succeeded;
@@ -88,9 +90,16 @@ enum AddinType
 public override void Install(IDictionary stateSaver)
         {
             Microsoft.Win32.RegistryKey rkbase = null;
+
             rkbase = Microsoft.Win32.RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, Microsoft.Win32.RegistryView.Registry64);
-            rkbase.CreateSubKey($"SOFTWARE\\Wow6432Node\\{companyName}\\Revit API NuGet Example 2019 Packages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree).SetValue("OokiiVersion", typeof(Ookii.Dialogs.Wpf.CredentialDialog).Assembly.FullName);
-            rkbase.CreateSubKey($"SOFTWARE\\Wow6432Node\\{companyName}\\Revit API NuGet Example 2019 Packages", Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree).SetValue("XceedVersion", typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid).Assembly.FullName);
+
+            rkbase.CreateSubKey($"SOFTWARE\\Wow6432Node\\{companyName}\\Revit API NuGet Example 2019 Packages", 
+                                Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree).SetValue("OokiiVersion", 
+                                typeof(Ookii.Dialogs.Wpf.CredentialDialog).Assembly.FullName);
+
+            rkbase.CreateSubKey($"SOFTWARE\\Wow6432Node\\{companyName}\\Revit API NuGet Example 2019 Packages", 
+                                Microsoft.Win32.RegistryKeyPermissionCheck.ReadWriteSubTree).SetValue("XceedVersion", 
+                                typeof(Xceed.Wpf.Toolkit.PropertyGrid.PropertyGrid).Assembly.FullName);
 
             string sDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Autodesk\\Revit\\Addins";
             bool exists = Directory.Exists(sDir);
@@ -142,7 +151,8 @@ public override void Uninstall(IDictionary stateSaver)
             bool exists = Directory.Exists(sDir);
 
             Microsoft.Win32.RegistryKey rkbase = null;
-            rkbase = Microsoft.Win32.RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, Microsoft.Win32.RegistryView.Registry64);
+            rkbase = Microsoft.Win32.RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, 
+                                                             Microsoft.Win32.RegistryView.Registry64);
             rkbase.DeleteSubKeyTree($"SOFTWARE\\Wow6432Node\\${companyName}\\Revit API NuGet Example 2019 Packages");
 
             if (exists)
@@ -180,17 +190,18 @@ Para el panel de **File System Config** es necesario agregar los resultados del 
 
 ![Configurar el file System.PNG](/images/posts/revit-api-msi-installer/Configurar_el_file_System.png)
 
-## \*B. **Configurar Register\***
 
+## _B. Configurar Register_
 Para el panel de **Register Config** es necesario agregar dos variables. **ProductVersion y TARGETDIR** dentro de la carpeta **[ProductName].**
 
-|— 📁 HKEY_LOCAL_MACHINE
 
-    |— 📂Software
+    |— 📂HKEY_LOCAL_MACHINE
 
-        |— 📂 [Manufacturer]
+        |— 📂 📂Software
 
-            |— 📂 [ProductName]
+            |— 📂 [Manufacturer]
+
+                |— 📂 [ProductName]
 
 ```
 | Name           | Value            |
