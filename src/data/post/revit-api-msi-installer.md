@@ -183,7 +183,7 @@ Para el panel de **Register Config** es necesario agregar dos variables. **Produ
 
     |— 📂HKEY_LOCAL_MACHINE
 
-        |— 📂 📂Software
+        |— 📂 Software
 
             |— 📂 [Manufacturer]
 
