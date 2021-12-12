@@ -31,7 +31,7 @@ const BlogBanner = () => {
   );
 };
 
-export default Banner;
+export default BlogBanner;
 
 const styles = {
   banner: {
