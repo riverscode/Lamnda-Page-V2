@@ -18,7 +18,7 @@ export default function IndexPage() {
       <StickyProvider>
         <VideoProvider>
           <Layout isHome={true}>
-            <SEO title="Lamda Ingeniería & Innovación" />
+            <SEO title="Lambda: &lrm;Cursos BIM Online Profesionales de Construcción" />
             <Banner />
             <KeyFeature />
             <Course />
