@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 export default function SEO({
-  description = "Pagina principal de Lambda. La empresa mas innovadora del sector construccion.",
+  description = "Aprender BIM con los cursos mas innovadores 🚀 Desarrolla tus habilidades en BIM!",
   author = "Lambda, Inc",
   meta,
   title = "Lambda Ingenieria e innovacion",
@@ -13,10 +13,7 @@ export default function SEO({
       name: `description`,
       content: description,
     },
-    {
-      property: `og:title`,
-      content: title,
-    },
+
     {
       property: `og:description`,
       content: description,
@@ -46,6 +43,10 @@ export default function SEO({
     <Head>
       <title>{title}</title>
       <meta property="og:image" content={previewImage} />
+      <meta property="og:title" content="Lambda: Los Mejores cursos BIM." />
+      <meta property="og:description" content={description} />
+      <meta name="keywords" content="Revit, BIM, Revit API" />
+      <meta name="author" content="@RiversCode" />
       {metaData.map(({ name, content }, i) => (
         <meta key={i} name={name} content={content} />
       ))}
