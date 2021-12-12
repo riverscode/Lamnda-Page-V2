@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Link } from "theme-ui";
 import { Container, Box, Heading, Text, Image, Button } from "theme-ui";
-import BannerImg from "assets/banner-thumb.png";
+import BannerHome from "assets/banner-home.png";
 
 export default function Banner() {
   return (
@@ -16,13 +16,12 @@ export default function Banner() {
             revolucionarán la industria de la construcción.
           </Text>
           <Link href="/curso" variant="default">
-
             <Button variant="primary">Nuestros Cursos</Button>
           </Link>
         </Box>
 
         <Box sx={styles.banner.imageBox}>
-          <Image src={BannerImg} alt="banner" />
+          <Image src={BannerHome} alt="banner" />
         </Box>
       </Container>
     </section>

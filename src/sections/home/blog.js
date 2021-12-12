@@ -3,7 +3,7 @@ import { jsx, Container, Box } from "theme-ui";
 import TextFeature from "components/text-feature";
 import Image from "components/image";
 
-import FeatureThumb from "assets/core-feature.png";
+import BannerBlog from "assets/banner-blog.png";
 
 const data = {
   subTitle: "Nuestro Blog",
@@ -28,7 +28,7 @@ export default function Blog() {
           />
         </Box>
         <Box sx={styles.thumbnail}>
-          <Image src={FeatureThumb} alt="Thumbnail" />
+          <Image src={BannerBlog} alt="Thumbnail" />
         </Box>
       </Container>
     </section>

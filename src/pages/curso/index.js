@@ -3,7 +3,8 @@ import theme from "theme";
 import Layout from "components/layout";
 import { StickyProvider } from "contexts/app/app.provider";
 import { VideoProvider } from "contexts/video/video.provider";
-import SEO from "components/seo"
+import CourseBanner from "sections/course/course-banner";
+import SEO from "components/seo";
 
 export default function CoursePage() {
   return (
@@ -11,7 +12,8 @@ export default function CoursePage() {
       <StickyProvider>
         <VideoProvider>
           <Layout isHome={false}>
-            <SEO title="Cursos - Lamda Ingeniería & Innovación" />
+            <SEO title="Lambda - Los Cursos BIM más Innovadores" />
+            <CourseBanner />
           </Layout>
         </VideoProvider>
       </StickyProvider>

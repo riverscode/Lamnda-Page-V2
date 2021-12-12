@@ -1,9 +1,18 @@
 /** @jsx jsx */
-import { jsx, Box, Flex, Container, Image, Heading, Text } from "theme-ui";
+import {
+  jsx,
+  Box,
+  Flex,
+  Container,
+  Image,
+  Heading,
+  Text,
+  Button,
+} from "theme-ui";
 
-import BannerBlog from "assets/banner-blog.png";
+import BannerCourse from "assets/banner-course.png";
 
-const BlogBanner = () => {
+const CourseBanner = () => {
   return (
     <Box as="section" id="banner" sx={styles.banner}>
       <Container sx={styles.banner.container}>
@@ -11,18 +20,26 @@ const BlogBanner = () => {
           <Box sx={styles.banner.col}>
             <Box sx={styles.banner.content}>
               <Heading as="h1">
-                Aprende temas <br />
-                BIM en minutos
+                Somos más que videos, construimos educación de calidad
               </Heading>
               <Text as="p">
-                El repositorio de articulos más innovadores. Aprender a
-                programar aplicaciones innovadoras, con pequeñas lecturas.
+                Los cursos más innovadores del sector construcción. Aprende con
+                profesionales de años de experiencia y tranforma tu carrera.
               </Text>
+              <a href="https://cutt.ly/4YmUHmE" target="_blank" rel="noopener">
+                <Button
+                  className="donate__btn"
+                  variant="secondary"
+                  aria-label="Contactanos"
+                >
+                  Contactanos
+                </Button>
+              </a>
             </Box>
           </Box>
           <Box sx={styles.banner.col}>
             <Box sx={styles.banner.imageBox}>
-              <Image src={BannerBlog} alt="banner image" />
+              <Image src={BannerCourse} alt="banner image" />
             </Box>
           </Box>
         </Flex>
@@ -31,7 +48,7 @@ const BlogBanner = () => {
   );
 };
 
-export default Banner;
+export default CourseBanner;
 
 const styles = {
   banner: {
@@ -71,7 +88,7 @@ const styles = {
         fontWeight: "bold",
         position: "relative",
         width: "100%",
-        fontSize: ["28px", "35px", "45px", "45px", null, "65px", "70px"],
+        fontSize: ["30px", "35px", "35px", "35px", null, "40px", "45px"],
         maxWidth: ["500px", null, null, null, null, null, "100%"],
         "&:before": {
           content: '""',
