@@ -1,11 +1,12 @@
-import React from 'react';
-import Head from 'next/head';
+import React from "react";
+import Head from "next/head";
 
 export default function SEO({
-  description = 'Pagina principal de Lambda. La empresa mas innovadora del sector construccion.',
-  author = 'Lambda, Inc',
+  description = "Pagina principal de Lambda. La empresa mas innovadora del sector construccion.",
+  author = "Lambda, Inc",
   meta,
-  title = 'Lambda Ingenieria e innovacion',
+  title = "Lambda Ingenieria e innovacion",
+  previewImage = "https://res.cloudinary.com/lambda-ingenier-a-e-innovaci-n/image/upload/v1639282806/imagePrevie_hvtlkq.webp",
 }) {
   const metaData = [
     {
@@ -44,6 +45,7 @@ export default function SEO({
   return (
     <Head>
       <title>{title}</title>
+      <meta property="og:image" content={previewImage} />
       {metaData.map(({ name, content }, i) => (
         <meta key={i} name={name} content={content} />
       ))}
