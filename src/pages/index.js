@@ -11,6 +11,7 @@ import Blog from "../sections/home/blog";
 import TestimonialCard from "../sections/home/testimonial";
 import Course from "../sections/home/course";
 import { VideoProvider } from "contexts/video/video.provider";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 export default function IndexPage() {
   return (
@@ -24,6 +25,10 @@ export default function IndexPage() {
             <Course />
             <Blog />
             <TestimonialCard />
+            <MessengerCustomerChat
+            pageId="106755961057499"
+            appId="1090833335084068"
+          />
             <Modal />
           </Layout>
         </VideoProvider>

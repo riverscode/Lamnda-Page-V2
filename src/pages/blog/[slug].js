@@ -6,9 +6,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import marked from "marked";
-import highlight from 'highlight.js'
+import highlight from "highlight.js";
 import Layout from "components/layout";
-import { FacebookProvider, Comments, Like } from 'react-facebook';
+import { FacebookProvider, Comments } from "react-facebook";
 import SEO from "components/seo";
 
 export default function PostPage({
@@ -19,24 +19,30 @@ export default function PostPage({
   return (
     <ThemeProvider theme={theme}>
       <Layout isHome={false}>
-      <SEO title={`Blog Lambda | ${title}`} />
+        <SEO title={`Blog Lambda | ${title}`} />
         <Container sx={styles.container}>
           <Box className="card card-page">
             <Image src={cover_image} alt="" css={{ width: "100%" }} />
             <h1 className="post-title">{title}</h1>
             <p className="post-date">Publicado en {date}</p>
             <Box className="post-body">
-              <Box dangerouslySetInnerHTML={{ __html: marked(content, {
-                highlight(md){
-                  return highlight.highlightAuto(md).value
-                }
-              }) }}></Box>
+              <Box
+                dangerouslySetInnerHTML={{
+                  __html: marked(content, {
+                    highlight(md) {
+                      return highlight.highlightAuto(md).value;
+                    },
+                  }),
+                }}
+              ></Box>
             </Box>
           </Box>
           <FacebookProvider appId="1090833335084068">
-            {/* <Like href={`https://lambda.com.pe/blog/${slug}`}  /> */}
-            <Comments href={`https://lambda.com.pe/blog/${slug}`}  width="100%"/>
-          </FacebookProvider> 
+            <Comments
+              href={`https://lambda.com.pe/blog/${slug}`}
+              width="100%"
+            />
+          </FacebookProvider>
         </Container>
       </Layout>
     </ThemeProvider>
