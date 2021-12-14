@@ -7,12 +7,15 @@ import "rc-drawer/assets/index.css";
 import "highlight.js/styles/xcode.css";
 import "assets/css/styles.css";
 import "typeface-dm-sans";
+import ReactGa from 'react-ga'
 
 export default function CustomApp({ Component, pageProps }) {
   useEffect(() => {
-    initGA();
-    logPageView();
-    Router.events.on("routeChangeComplete", logPageView);
+    ReactGa.initialize('G-9H70XCYC6K');
+    ReactGa.pageview('/')
+    // initGA();
+    // logPageView();
+    // Router.events.on("routeChangeComplete", logPageView);
   }, []);
 
 
