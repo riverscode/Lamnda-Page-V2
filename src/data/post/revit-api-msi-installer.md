@@ -2,7 +2,7 @@
 title: "Como generar un instalador (.msi) para un plugin de Revit | Revit API"
 date: "Diciembre 10, 2021"
 excerpt: "Aprenderemos a crear un instalador para un aplicativo de la API de Revit en Visual Studio C#"
-cover_image: "/images/posts/revit-api-msi-installer/Configuracion_de_Acciones_personalizadas.png"
+cover_image: "/images/posts/revit-api-msi-installer/cover.jpg"
 ---
 
 Una pregunta recurrente en los cursos del cursos **[Automatizacion de procesos con la API de Revit](https://lambda.com.pe/curso)** es como se puede crear un instalador en formato .msi para un aplicativo creado.
