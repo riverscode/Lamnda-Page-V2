@@ -113,10 +113,12 @@ TaskDialog.Show("Mi primer aplicativo", "Hola Mundo");
 
 Ahora faltaria añadir el transaction que va entre corchetes [ ], el cual nos permitira comunicarnos con toda la base de datos de Revit, encontraremos dos tipos:
 
+```
 | TransactionMode | Descripción                          |
 | --------------- | ------------------------------------ |
 | ReadOnly:       | Solo modo de lectura.                |
 | Manual:         | Te permite realizar cambios a Revit. |
+```
 
 ![15.jpg](/images/posts/mi-primer-addin/15.jpg)
 
@@ -144,6 +146,7 @@ Luego ingresamos al siguiente [Link](https://gist.github.com/riverscode/e5c8e4a3
 </RevitAddIns>
 ```
 
+```
 | Campos            | Descripción                                                                                                                                                       |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AddIn Type        | Tipo de aplicativo que podria ser “Command” o “Aplication”                                                                                                        |
@@ -155,6 +158,7 @@ Luego ingresamos al siguiente [Link](https://gist.github.com/riverscode/e5c8e4a3
 | VendorDescription | Una descripción del aplicativo, para que sirve.                                                                                                                   |
 | VisibilityMode    | NotVisibleInFamily: Que no se aplicara dicho applicativo en una familia.                                                                                          |
 | Discipline        | Disciplina según la especialidad en que se trabajara (Arquitectura, Estructura, Electrica, Mecanicas, Etc).                                                       |
+```
 
 Luego agregaremos a Visual Studio los eventos de compilación, los cuales despues de compilar un addin dentro de Revit. Permite compilar los archivos .dll y .addin dentro de una caperta que Revit leera el manifiesto y podra cargar nuestro addin, podemos encontrar estos eventos en el siguiente [link](https://gist.github.com/riverscode/66b6acac8cd453ad8dac6e553fce9f56).
 
