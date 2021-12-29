@@ -132,11 +132,11 @@ Dentro de nuestro método **Execute** obtenemos las categorías donde asignaremo
 ```csharp
 CategorySet categorySet = new CategorySet();
 
-categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Walls));
 categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_StructuralColumns));
-categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Floors));
 categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_StructuralFraming));
 categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_StructuralFoundation));
+categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Walls));
+categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Floors));
 categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Stairs));
 ```
 
@@ -199,11 +199,11 @@ namespace SetFowrwork
 
             CategorySet categorySet = new CategorySet();
 
-            categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Walls));
             categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_StructuralColumns));
-            categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Floors));
             categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_StructuralFraming));
             categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_StructuralFoundation));
+            categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Walls));
+            categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Floors));
             categorySet.Insert(Category.GetCategory(doc, BuiltInCategory.OST_Stairs));
 
             using (Transaction trans = new Transaction(doc))
