@@ -202,7 +202,7 @@ Dentro de las Custom Actions, configuramos las acciones de Install y UnInstall a
 
 **Nota:**
 
-Al momento de configurar la propiedad de **TARGETDIR** en el panel de propiedades de cada acciones. Asignar el valor **/Target.Dir="[TARGETDIR] ".** Note que se esta dejando un espacio antes de cerrar las comillas. **NO OLVIDAR!**
+Al momento de configurar la propiedad de **TARGETDIR** en el panel de propiedades de cada acciones. Asignar el valor **/TargetDir="[TARGETDIR] ".** Note que se esta dejando un espacio antes de cerrar las comillas. **NO OLVIDAR!**
 
 ![Configuracion de Acciones personalizadas.PNG](/images/posts/revit-api-msi-installer/Configuracion_de_Acciones_personalizadas.png)
 
