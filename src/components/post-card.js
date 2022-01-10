@@ -26,8 +26,8 @@ const styles = {
   card: {
     backgroundColor: "white",
     boxShadow: "0px 4px 10px rgba(38, 78, 118, 0.3)",
-    borderRadius: "7px",
-    m: "0 15px 40px",
+    borderRadius: "5px",
+    m: "0 10px 20px",
     transition: "all 0.3s",
   },
 
@@ -42,14 +42,14 @@ const styles = {
   postContent: {
     flexDirection: "column",
     justifyContent: "space-between",
-    padding: ["15px 4px", "25px 8px"],
+    padding: ["20px 30px", "15px 20px"],
   },
   title: {
     fontSize: [3, null, null, null, null, 4],
     color: "heading",
-    lineHeight: [1.4, 1.5],
+    lineHeight: [1.4, 1.3],
     fontWeight: 700,
-    mb: [3, 4, 5],
+    mb: [3, 3, 3],
     pr: [0, null, null, null, 5],
   },
   postFooter: {
