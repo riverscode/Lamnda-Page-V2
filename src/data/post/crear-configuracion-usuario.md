@@ -2,7 +2,7 @@
 title: "Crear Configuraciones de usuario con la API de Revit"
 date: "Enero 09, 2022"
 excerpt: "Un tutorial completo de como crear configuraciones de usuario."
-cover_image: "/images/posts/crear-configuracion-usuario/cover.jpg"
+cover_image: "/images/posts/crear-configuracion-usuario/cover.png"
 ---
 
 Durante la semana se me contrato para un proyecto que consistía en el desarrollo de un aplicativo en Autodesk Revit. El aplicativo era sencillo, al inicio, se tenia que crear un addin que permita cuantificar la cantidad de **[Encofrado](https://es.wikipedia.org/wiki/Encofrado)** de elementos estructurales.

@@ -2,7 +2,7 @@
 title: Mi primer addin con la API de Revit
 date: "Diciembre 26, 2021"
 excerpt: "Conoceremos como crear nuestro primer addin con la API de Revit"
-cover_image: "/images/posts/mi-primer-addin/cover.jpg"
+cover_image: "/images/posts/mi-primer-addin/cover.png"
 ---
 
 La tecnologia esta cambiando los habitos de las personas, desde mantenerlas informardas hasta volverlas mas exigentes, lo cual aporta en realización personal y laboral de cada persona, de tal manera que nos reinventemos para ofrecer buenas experiencias, responder a la demanda laboral, reducir costos, automatizar procesos, aumentar ingresos, etc. Es por ello que en este Post tratamos de compartir un granito de conocimiento de como ingresar al mundo de la API en Revit.

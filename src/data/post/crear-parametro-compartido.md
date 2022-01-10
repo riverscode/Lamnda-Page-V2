@@ -2,7 +2,7 @@
 title: "Crear un  parámetro compartido con la API de Revit | Revit API"
 date: "Diciembre 29, 2021"
 excerpt: "Un tutorial completo de como crear un parametro compartido con la API de Revit."
-cover_image: "/images/posts/crear-parametro-compartido/cover.jpg"
+cover_image: "/images/posts/crear-parametro-compartido/cover.png"
 ---
 
 Todos tenemos claro que lo mas importante de BIM es la I de información. En Revit tenemos esta información almacenada en los parámetros. Para este pequeño articulo hablaremos como haremos para crear un parámetro compartido y asignarlo a ciertas categorías. 
