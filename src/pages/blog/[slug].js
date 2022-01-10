@@ -19,7 +19,7 @@ export default function PostPage({
   return (
     <ThemeProvider theme={theme}>
       <Layout isHome={false}>
-        <SEO title={`Blog Lambda | ${title}`} previewImage={cover_image} description={excerpt}/>
+        <SEO title={`Blog Lambda | ${title}`} previewImage={`https://lambda.com.pe${cover_image}`} description={excerpt}/>
         <Container sx={styles.container}>
           <Box className="card card-page">
             <Image src={cover_image} alt="" css={{ width: "100%" }} />
