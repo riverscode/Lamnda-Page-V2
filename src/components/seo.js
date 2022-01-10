@@ -6,7 +6,7 @@ export default function SEO({
   author = "Lambda, Inc",
   meta,
   title = "Lambda Ingenieria e innovacion",
-  previewImage = "https://res.cloudinary.com/lambda-ingenier-a-e-innovaci-n/image/upload/v1639282806/imagePrevie_hvtlkq.webp",
+  previewImage = "https://res.cloudinary.com/lambda-ingenier-a-e-innovaci-n/image/upload/v1641850100/lambda-ogimage_mbrwai.webp",
 }) {
   const metaData = [
     {

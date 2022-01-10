@@ -12,14 +12,14 @@ import { FacebookProvider, Comments } from "react-facebook";
 import SEO from "components/seo";
 
 export default function PostPage({
-  frontmatter: { title, date, cover_image },
+  frontmatter: { title, date, cover_image, excerpt },
   slug,
   content,
 }) {
   return (
     <ThemeProvider theme={theme}>
       <Layout isHome={false}>
-        <SEO title={`Blog Lambda | ${title}`} />
+        <SEO title={`Blog Lambda | ${title}`} previewImage={cover_image} description={excerpt}/>
         <Container sx={styles.container}>
           <Box className="card card-page">
             <Image src={cover_image} alt="" css={{ width: "100%" }} />
@@ -72,7 +72,7 @@ export async function getStaticProps({ params: { slug } }) {
   );
 
   const { data: frontmatter, content } = matter(markdownWithMeta);
-
+    console.log(frontmatter);
   return {
     props: {
       frontmatter,
