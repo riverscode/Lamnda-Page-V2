@@ -1,7 +1,7 @@
 ---
 title: "Crear Configuraciones de usuario con la API de Revit"
 date: "Enero 09, 2022"
-excerpt: "Un tutorial completo de como crear un parametro compartido con la API de Revit."
+excerpt: "Un tutorial completo de como crear configuraciones de usuario."
 cover_image: "/images/posts/crear-configuracion-usuario/cover.jpg"
 ---
 
