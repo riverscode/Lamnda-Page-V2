@@ -1,5 +1,4 @@
-# Lambda Page (DEPRECATED)
-
+# Lambda Page 
 
 
 
